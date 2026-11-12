@@ -38,6 +38,9 @@ print(verify_bundle(bundle, b"...kept elsewhere..."))
 print(verify("./logstore", b"...kept elsewhere..."))
 ```
 
+## Compared with the existing tool
+systima's `aiact-audit-log` (TypeScript) is more mature: HMAC chain, S3 Object Lock, CLI, faster writes. This build's differences are an erasable content layer and a role-based evidence-access layer that logs every request. See `comparison/RUN.md` and `docs/EVIDENCE.md`.
+
 ## Limits (read these before trusting it)
 
 - **Tamper-evident, not tamper-proof.** Someone with write access plus the anchor key can forge a history. Put the log on write-once storage and hold the key elsewhere. A public-key signature or an external timestamp (RFC 3161, OpenTimestamps) would remove the shared-key weakness. Not built.

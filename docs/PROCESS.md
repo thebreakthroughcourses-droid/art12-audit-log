@@ -15,7 +15,9 @@ The AI-focus Learn article is about AI liability and data control: who pays when
 ## 2. Research
 - Article 12 requires high-risk AI systems to technically allow automatic recording of events over their lifetime. Deployers keep logs at least six months (Art. 26(6)).
 - Found the existing open-source tool, systima's `aiact-audit-log` (TypeScript, SHA-256 chain, 180-day floor, coverage command).
-- I could not open its repository from the build environment. Its design comes from its author's own description in a Show HN thread (March 2026). The comparison in the report is therefore secondhand and its "planned" features may be out of date.
+- First pass (11 Nov): I could not open its repository, so I worked from its author's Show HN description. That description undersold the tool.
+- Second pass (12 Nov): cloned and read v0.2.0 (CHANGELOG, README, source), built it, and ran it. It already has an optional HMAC-keyed chain, S3 Object Lock, a `getChainHead()` hook for external anchoring, PII hashing and redaction, a 180-day lifecycle rule, a CLI and a test suite. It has no separate content layer and no access-control layer. Their own docs say a keyed chain does not survive compromise of the logging process, which is the same limit as this build's signed checkpoints.
+- Correction: my 11 Nov report implied signed checkpoints were an advance on a plain chain. Against v0.2.0 they are roughly equivalent to its HMAC option. The difference that remains is the access layer and the erasable content layer.
 - The thread raised two criticisms that shaped the design:
   1. Anyone with storage access can rebuild a plain hash chain. Answer here: signed checkpoints.
   2. Hash-chained personal data collides with GDPR erasure. Answer here: personal data in a separate content layer, chain holds only a salted commitment.
@@ -41,5 +43,8 @@ The AI-focus Learn article is about AI liability and data control: who pays when
 - Not done: public-key signatures or external timestamps (the checkpoint key is shared-secret), locking for concurrent writers, timer-based checkpoints, running the other tool side by side.
 - Pushing to GitHub was blocked because the Claude GitHub App was not installed on the repo; files were delivered by upload instead.
 
-## 6. Not legal advice
+## 6. Article 12 timing
+Article 12 applies with the high-risk obligations. Those were due 2 August 2026. The Commission's AI Act FAQ page now says they apply from 2 December 2027 (embedded products 2 August 2028) following the Digital Omnibus, which it says entered into force on 27 July 2026. Sources that still say August 2026 are out of date for high-risk systems; Article 50 transparency duties did start on 2 August 2026. I read this on the Commission's web page, not in the Official Journal text, so check the regulation itself before quoting an exact article reference.
+
+## 7. Not legal advice
 Whether this satisfies Article 12 for a real system is a legal question this project does not answer.

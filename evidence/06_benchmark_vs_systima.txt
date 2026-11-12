@@ -1,0 +1,51 @@
+# Side-by-side benchmark, 10,000 entries, filesystem, same machine, Thu Nov 12 14:01:30 UTC 2026
+# Python 3.13.18, node v22.23.4
+
+## run 1: systima aiact-audit-log v0.2.0 (HMAC chain, batched, no fsync)
+entries              10000
+write (batched 100)  0.79s -> 12,595 entries/s
+full verify          0.13s  result={"valid":true,"entriesChecked":10000,"firstBreak":null}
+disk                 5.7 MB (567 bytes/entry)
+## run 1: this build (fsync every entry)
+entries              10000
+write (fsync each)   4.81s  -> 2,077 entries/s, 0.48 ms each
+full verify          0.36s  ok=True
+disk                 5.3 MB (530 bytes/entry incl. content)
+## run 1: this build (fsync disabled, closest to theirs)
+entries              10000
+write (fsync each)   1.62s  -> 6,188 entries/s, 0.16 ms each
+full verify          0.36s  ok=True
+disk                 5.3 MB (530 bytes/entry incl. content)
+
+## run 2: systima aiact-audit-log v0.2.0 (HMAC chain, batched, no fsync)
+entries              10000
+write (batched 100)  0.80s -> 12,529 entries/s
+full verify          0.13s  result={"valid":true,"entriesChecked":10000,"firstBreak":null}
+disk                 5.7 MB (567 bytes/entry)
+## run 2: this build (fsync every entry)
+entries              10000
+write (fsync each)   5.47s  -> 1,827 entries/s, 0.55 ms each
+full verify          0.37s  ok=True
+disk                 5.3 MB (530 bytes/entry incl. content)
+## run 2: this build (fsync disabled, closest to theirs)
+entries              10000
+write (fsync each)   1.03s  -> 9,685 entries/s, 0.10 ms each
+full verify          0.39s  ok=True
+disk                 5.3 MB (530 bytes/entry incl. content)
+
+## run 3: systima aiact-audit-log v0.2.0 (HMAC chain, batched, no fsync)
+entries              10000
+write (batched 100)  0.83s -> 12,099 entries/s
+full verify          0.12s  result={"valid":true,"entriesChecked":10000,"firstBreak":null}
+disk                 5.7 MB (567 bytes/entry)
+## run 3: this build (fsync every entry)
+entries              10000
+write (fsync each)   6.11s  -> 1,636 entries/s, 0.61 ms each
+full verify          0.38s  ok=True
+disk                 5.3 MB (530 bytes/entry incl. content)
+## run 3: this build (fsync disabled, closest to theirs)
+entries              10000
+write (fsync each)   0.67s  -> 14,976 entries/s, 0.07 ms each
+full verify          0.36s  ok=True
+disk                 5.3 MB (530 bytes/entry incl. content)
+
