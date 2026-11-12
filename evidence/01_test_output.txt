@@ -1,0 +1,21 @@
+# Test run: python3 tests/test_art12.py
+Python 3.13.18
+Wed Nov 11 06:42:37 UTC 2026
+test_access_control_and_logging (__main__.T.test_access_control_and_logging) ... ok
+test_bundle_verifies_offline_and_detects_tampering (__main__.T.test_bundle_verifies_offline_and_detects_tampering) ... ok
+test_clean_chain_verifies (__main__.T.test_clean_chain_verifies) ... ok
+test_content_deleted_without_erasure_detected (__main__.T.test_content_deleted_without_erasure_detected) ... ok
+test_content_edited_detected (__main__.T.test_content_edited_detected) ... ok
+test_coverage_finds_omissions (__main__.T.test_coverage_finds_omissions) ... ok
+test_deleted_entry_detected (__main__.T.test_deleted_entry_detected) ... ok
+test_edit_detected (__main__.T.test_edit_detected) ... ok
+test_erasure_after_floor_keeps_chain_valid (__main__.T.test_erasure_after_floor_keeps_chain_valid) ... ok
+test_erasure_blocked_inside_retention_floor (__main__.T.test_erasure_blocked_inside_retention_floor) ... ok
+test_full_rehash_attack_caught_by_checkpoints (__main__.T.test_full_rehash_attack_caught_by_checkpoints)
+Attacker edits an entry and recomputes every hash after it. The chain alone passes; ... ok
+test_truncation_past_checkpoint_detected (__main__.T.test_truncation_past_checkpoint_detected) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.437s
+
+OK

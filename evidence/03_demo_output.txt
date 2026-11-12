@@ -1,0 +1,10 @@
+# Demo run: python3 demo.py
+Wed Nov 11 06:42:41 UTC 2026
+logged 66 events in /tmp/art12demo_vj3b9zuj
+verify: {'ok': True, 'entries': 66, 'checkpoints': 2, 'erased_refs': 0, 'errors': []}
+coverage: {'expected': 61, 'logged': 60, 'missing': ['D9999']}
+regulator bundle: 54 entries, content {'included'} | offline verify: {'ok': True, 'errors': [], 'entries': 54}
+deployer bundle content: {'withheld_by_policy'}
+after erasure verify: {'ok': True, 'entries': 70, 'checkpoints': 4, 'erased_refs': 2, 'errors': []}
+content status after erasure: {'erased'}
+sample files: /tmp/art12demo_vj3b9zuj

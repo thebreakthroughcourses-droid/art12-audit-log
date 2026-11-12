@@ -1,0 +1,7 @@
+# Benchmark run: python3 benchmark.py
+Python 3.13.18
+Wed Nov 11 06:42:37 UTC 2026
+entries              10000
+write (fsync each)   2.61s  -> 3,826 entries/s, 0.26 ms each
+full verify          0.31s  ok=True
+disk                 5.3 MB (530 bytes/entry incl. content)

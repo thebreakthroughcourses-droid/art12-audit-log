@@ -1,0 +1,26 @@
+# Attack demo: python3 attack_demo.py
+Wed Nov 11 06:42:41 UTC 2026
+
+[0. untouched log] ok=True
+
+[1. edit one entry (threshold 0.7 -> 0.2)] ok=False
+   - entry hash mismatch at seq 11
+
+[2. delete one entry] ok=False
+   - seq gap or reorder at position 41 (seq 42)
+   - broken link at seq 42
+   - seq gap or reorder at position 42 (seq 43)
+   ... 61 errors total
+
+[3. cut the last 40 entries] ok=False
+   - truncation: checkpoint at seq 75 but chain ends at 60
+   - truncation: checkpoint at seq 100 but chain ends at 60
+
+[4. edit one entry AND recompute every hash after it] ok=False
+   - chain rewritten before checkpoint seq 25
+   - chain rewritten before checkpoint seq 50
+   - chain rewritten before checkpoint seq 75
+   ... 4 errors total
+
+[5. delete a personal-data file without an erasure record] ok=False
+   - content e07fc3f4697d4885 (seq 6) missing with no erasure event
